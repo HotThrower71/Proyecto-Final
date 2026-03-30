@@ -210,11 +210,161 @@
 
 .contenido-sobre-mi{
     align-items: center;
+    padding-bottom: 20px;
     
 }
 .imagen-personal{
+    align-items: center;
+    padding: 0;
+    margin: 0;
     display: block;
     margin: 0 auto;
     max-width: 100%;
-    padii
+    
+}
+.texto-descripcion-personal{
+    padding: 20px;
+    background-color:white;
+    border-radius: 20px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    box-shadow: #111;
+    color: #777;
+}
+
+.contenedor-global-recomendaciones {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.titulo-pagina-seccion {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.tarjeta-maquina-recomendada {
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-maquina-recomendada:hover {
+    transform: translateY(-3px);
+}
+
+.caja-imagen-maquina {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.caja-imagen-maquina img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.caja-detalles-maquina {
+    flex: 2;
+    padding: 30px;
+}
+
+.titulo-maquina {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.descripcion-breve-maquina {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.contenedor-pros-contras {
+    display: flex;
+    gap: 30px;
+}
+
+.columna-pros, .columna-contras {
+    flex: 1;
+}
+
+.columna-pros h3, .columna-contras h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.lista-pros, .lista-contras {
+    list-style: none;
+    padding: 0;
+}
+
+.item-pro, .item-contra {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.item-pro::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    background-color: #28a745;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.item-contra::before {
+    content: '\2717';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    background-color: #dc3545;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.insignia-numeracion-top {
+    display: inline-block;
+    background-color: #ffaa00;
+    color: #111;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
