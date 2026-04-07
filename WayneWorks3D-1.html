@@ -48,14 +48,43 @@
         </div>
 
         <div class="seccion-derecha-login">
+            <button id="btn-abrir-formulario" class="boton-anadir-noticia">Añadir noticia</button>
             <a href="#login" class="enlace-iniciar-sesion">Login</a>
         </div>
     </header>
 
+    <div id="modal-noticia" class="capa-modal-oculta">
+        <div class="contenido-modal">
+            <span id="btn-cerrar-modal" class="boton-cerrar">&times;</span>
+            <h2 class="titulo-formulario">Nueva Noticia</h2>
+            <form id="form-nueva-noticia">
+                <div class="campo-formulario">
+                    <label for="titulo">Título de la noticia:</label>
+                    <input type="text" id="titulo" name="titulo" required placeholder="Escribe el título...">
+                </div>
+                <div class="campo-formulario">
+                    <label for="categoria">Categoría (Tema):</label>
+                    <input type="text" id="categoria" name="categoria" required placeholder="Ej: Máquinas, Importante...">
+                </div>
+                <div class="campo-formulario">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" required placeholder="Escribe el contenido de la noticia..."></textarea>
+                </div>
+                <div class="campo-formulario">
+                    <label for="imagen">URL de la imagen (opcional):</label>
+                    <input type="text" id="imagen" name="imagen" placeholder="Pega el enlace de una imagen o deja vacío">
+                </div>
+                <button type="submit" class="boton-guardar-noticia">Publicar Noticia</button>
+            </form>
+        </div>
+    </div>
+
     <main class="area-contenido-principal">
 
         <section class="contenedor-global-noticias">
-        <h1 class="titulo-pagina-seccion">Noticias</h1>
+            <h1 class="titulo-pagina-seccion">Noticias</h1>
+
+            <div id="contenedor-dinamico-principal"></div>
 
             <div class="fila-noticia-destacada-completa">
                 <article class="tarjeta-individual-noticia">
@@ -101,6 +130,8 @@
         </section>
 
     </main>
+
+    <script src="WayneWorks3D.js"></script>
 
 </body>
 
