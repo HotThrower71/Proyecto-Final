@@ -24,17 +24,17 @@ function actualizarInterfazSegunSesion() {
     const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
 
     if (usuarioLogueado) {
-        btnLoginLogout.textContent = `Logout (${usuarioLogueado.username})`;
+        if (btnLoginLogout) btnLoginLogout.textContent = `Logout (${usuarioLogueado.username})`;
         
         // Solo el admin puede añadir noticias
         if (usuarioLogueado.role === 'admin' && btnAbrir) {
-            btnAbrir.style.display = 'inline-block';
+            btnAbrir.classList.remove('oculto-por-defecto');
         } else if (btnAbrir) {
-            btnAbrir.style.display = 'none';
+            btnAbrir.classList.add('oculto-por-defecto');
         }
     } else {
-        btnLoginLogout.textContent = 'Login';
-        if (btnAbrir) btnAbrir.style.display = 'none';
+        if (btnLoginLogout) btnLoginLogout.textContent = 'Login';
+        if (btnAbrir) btnAbrir.classList.add('oculto-por-defecto');
     }
 }
 
@@ -44,10 +44,10 @@ actualizarInterfazSegunSesion();
 // --- EVENTOS DE MODALES ---
 
 // Modal Noticia
-if (btnAbrir) {
+if (btnAbrir && modal) {
     btnAbrir.onclick = function() { modal.classList.add('capa-modal-activa'); }
 }
-if (btnCerrar) {
+if (btnCerrar && modal) {
     btnCerrar.onclick = function() { modal.classList.remove('capa-modal-activa'); }
 }
 
@@ -59,18 +59,19 @@ if (btnLoginLogout) {
             // Si ya hay sesión, el botón hace Logout
             localStorage.removeItem('usuarioLogueado');
             actualizarInterfazSegunSesion();
-            location.reload(); // Recargar para limpiar estado
-        } else {
+            // Si no estamos en la principal, recargamos para asegurar que el estado es limpio
+            location.reload(); 
+        } else if (modalLogin) {
             // Si no hay sesión, abrir modal
             modalLogin.classList.add('capa-modal-activa');
         }
     }
 }
 
-if (btnCerrarLogin) {
+if (btnCerrarLogin && modalLogin) {
     btnCerrarLogin.onclick = function() { 
         modalLogin.classList.remove('capa-modal-activa');
-        errorLogin.style.display = 'none';
+        if (errorLogin) errorLogin.classList.add('oculto-por-defecto');
         formLogin.reset();
     }
 }
@@ -82,8 +83,8 @@ window.onclick = function(event) {
     }
     if (event.target == modalLogin) { 
         modalLogin.classList.remove('capa-modal-activa');
-        errorLogin.style.display = 'none';
-        formLogin.reset();
+        if (errorLogin) errorLogin.classList.add('oculto-por-defecto');
+        if (formLogin) formLogin.reset();
     }
 }
 
@@ -103,12 +104,13 @@ if (formLogin) {
             localStorage.setItem('usuarioLogueado', JSON.stringify(datosUsuario));
             
             actualizarInterfazSegunSesion();
-            modalLogin.classList.remove('capa-modal-activa');
+            if (modalLogin) modalLogin.classList.remove('capa-modal-activa');
             formLogin.reset();
-            errorLogin.style.display = 'none';
+            if (errorLogin) errorLogin.classList.add('oculto-por-defecto');
         } else {
             // Login incorrecto
-            errorLogin.style.display = 'block';
+            if (errorLogin) errorLogin.classList.remove('oculto-por-defecto');
+            if (errorLogin) errorLogin.style.display = 'block'; // Asegurar visibilidad si la clase no es suficiente
         }
     };
 }

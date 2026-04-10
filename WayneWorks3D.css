@@ -50,6 +50,18 @@
     color: #ffaa00; 
 }
 
+/* Clases para centralizar estilos que estaban en línea */
+.oculto-por-defecto {
+    display: none !important;
+}
+
+.mensaje-error-login {
+    color: #ff4444;
+    display: none;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
 .boton-anadir-noticia {
     background-color: #ffaa00;
     color: #111;
