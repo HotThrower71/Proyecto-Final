@@ -29,13 +29,21 @@
 }
 
 .seccion-derecha-login { 
-    text-align: right; 
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .enlace-iniciar-sesion {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
 }
 
 .enlace-iniciar-sesion:hover { 
@@ -220,7 +228,7 @@
 }
 
 .area-contenido-principal {
-    padding-top: 100px;
+    padding-top: 0;
     padding-bottom: 60px;
     min-height: 100vh;
     background-color: #f4f4f4;
@@ -506,4 +514,161 @@
         flex: 0 0 100% !important;
         width: 100% !important;
     }
+}
+
+/* --- ESTILOS MEJORADOS SOBRE MÍ --- */
+.contenedor-sobre-mi-mejorado {
+    width: 100%;
+    background-color: #f4f4f4;
+}
+
+.hero-sobre-mi {
+    height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ffc5.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.titulo-hero {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: #ffaa00;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.subtitulo-hero {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.contenedor-ajustado {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+}
+
+.fila-bio {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 80px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.columna-imagen-bio {
+    flex: 1;
+}
+
+.marco-imagen {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #eee;
+}
+
+.columna-imagen-bio img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+}
+
+.columna-texto-bio {
+    flex: 2;
+}
+
+.titulo-seccion-interna {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.titulo-seccion-interna::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #ffaa00;
+    margin-top: 10px;
+}
+
+.columna-texto-bio p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.frase-destacada {
+    background-color: #333;
+    color: #ffaa00;
+    padding: 25px;
+    font-size: 1.4rem;
+    font-style: italic;
+    border-left: 5px solid #ffaa00;
+    border-radius: 0 10px 10px 0;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.fila-especialidades {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tarjeta-especialidad {
+    flex: 1;
+    min-width: 280px;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent;
+}
+
+.tarjeta-especialidad:hover {
+    transform: translateY(-10px);
+    border-bottom: 4px solid #ffaa00;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.icono-especialidad {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.tarjeta-especialidad h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.tarjeta-especialidad p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+    .fila-bio { flex-direction: column; text-align: center; }
+    .titulo-seccion-interna::after { margin: 10px auto; }
+    .titulo-hero { font-size: 2.5rem; }
 }

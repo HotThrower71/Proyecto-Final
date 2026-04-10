@@ -48,29 +48,88 @@
         </div>
 
         <div class="seccion-derecha-login">
-            <a href="#login" class="enlace-iniciar-sesion">Login</a>
+            <button id="btn-login-logout" class="enlace-iniciar-sesion">Login</button>
         </div>
     </header>
 
+    <!-- Modal para Login -->
+    <div id="modal-login" class="capa-modal-oculta">
+        <div class="contenido-modal">
+            <span id="btn-cerrar-login" class="boton-cerrar">&times;</span>
+            <h2 class="titulo-formulario">Iniciar Sesión</h2>
+            <form id="form-login">
+                <div class="campo-formulario">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required placeholder="Introduce tu usuario...">
+                </div>
+                <div class="campo-formulario">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required placeholder="Introduce tu contraseña...">
+                </div>
+                <button type="submit" class="boton-guardar-noticia">Entrar</button>
+                <p id="error-login" style="color: red; display: none; margin-top: 10px;">Usuario o contraseña incorrectos.</p>
+            </form>
+        </div>
+    </div>
+
     <main class="area-contenido-principal">
 
-        <section class="contenedor-global-noticias">
-            <h1 class="titulo-pagina-seccion">Sobre nosotros</h1>
-            <div class="contenido-sobre-mi">
-                    <img src="logo Wayne.png" alt="Imagen personal" class="imagen-personal">
-                <div class="descripcion-personal"></div>
-
+        <section class="contenedor-sobre-mi-mejorado">
+            
+            <!-- Hero Section de Sobre Mí -->
+            <div class="hero-sobre-mi">
+                <div class="capa-textos-hero">
+                    <h1 class="titulo-hero">WayneWorks3D</h1>
+                    <p class="subtitulo-hero">Innovación, Diseño y Fabricación Digital</p>
+                </div>
             </div>
 
-            <p class="texto-descripcion-personal">
-                Esta es la descripcion de ismale de prada machado pehjwekfnhwjebf jsdibjasbhasubfuj asibashjkcbshjoacbshdjov bjsdl hdkb hashbcvhakcsh djkahsdkafhhjs dkBFhjbhcj bsHkc bh JKChj kbchjkb Hcjkb.
-            </p>
+            <div class="contenedor-ajustado">
+                
+                <!-- Sección Biografía -->
+                <div class="fila-bio">
+                    <div class="columna-imagen-bio">
+                        <div class="marco-imagen">
+                            <img src="logo Wayne.png" alt="WayneWorks3D Logo">
+                        </div>
+                    </div>
+                    <div class="columna-texto-bio">
+                        <h2 class="titulo-seccion-interna">Nuestra Historia</h2>
+                        <p>WayneWorks3D nació de la pasión por la tecnología y la creación de objetos tangibles a partir de ideas digitales. Lo que comenzó como un hobby en un pequeño taller, se ha convertido en un referente de la impresión 3D, explorando siempre los límites de lo posible.</p>
+                        <p>Nos especializamos en ofrecer soluciones personalizadas, desde el modelado inicial hasta la pieza final, garantizando la máxima calidad en cada capa. Nuestra misión es democratizar el acceso a la fabricación aditiva y ayudar a creadores y empresas a hacer realidad sus proyectos más ambiciosos.</p>
+                        
+                        <div class="frase-destacada">
+                            "Si puedes imaginarlo, podemos imprimirlo."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección Especialidades (Tarjetas) -->
+                <h2 class="titulo-pagina-seccion">Nuestras Especialidades</h2>
+                <div class="fila-especialidades">
+                    <div class="tarjeta-especialidad">
+                        <div class="icono-especialidad">⚙️</div>
+                        <h3>Prototipado Rápido</h3>
+                        <p>Creamos prototipos funcionales en tiempo récord para validar tus diseños antes de la producción.</p>
+                    </div>
+                    <div class="tarjeta-especialidad">
+                        <div class="icono-especialidad">🎨</div>
+                        <h3>Modelado 3D</h3>
+                        <p>Transformamos tus bocetos en modelos digitales precisos y listos para la impresión.</p>
+                    </div>
+                    <div class="tarjeta-especialidad">
+                        <div class="icono-especialidad">🚀</div>
+                        <h3>Producción Final</h3>
+                        <p>Fabricación de piezas finales con acabados profesionales y materiales técnicos de alta resistencia.</p>
+                    </div>
+                </div>
 
             </div>
-
         </section>
 
     </main>
+
+    <script src="WayneWorks3D.js"></script>
 
 </body>
 

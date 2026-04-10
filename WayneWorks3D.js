@@ -1,18 +1,119 @@
+// Elementos del Modal de Noticia
 const modal = document.getElementById('modal-noticia');
 const btnAbrir = document.getElementById('btn-abrir-formulario');
 const btnCerrar = document.getElementById('btn-cerrar-modal');
 const form = document.getElementById('form-nueva-noticia');
 const contenedorDinamico = document.getElementById('contenedor-dinamico-principal');
 
+// Elementos del Modal de Login
+const modalLogin = document.getElementById('modal-login');
+const btnLoginLogout = document.getElementById('btn-login-logout');
+const btnCerrarLogin = document.getElementById('btn-cerrar-login');
+const formLogin = document.getElementById('form-login');
+const errorLogin = document.getElementById('error-login');
+
+// Usuarios predefinidos
+const usuarios = {
+    'user': { password: 'user', role: 'user' },
+    'admin': { password: 'admin', role: 'admin' }
+};
+
+// --- GESTIÓN DE SESIÓN ---
+
+function actualizarInterfazSegunSesion() {
+    const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
+
+    if (usuarioLogueado) {
+        btnLoginLogout.textContent = `Logout (${usuarioLogueado.username})`;
+        
+        // Solo el admin puede añadir noticias
+        if (usuarioLogueado.role === 'admin' && btnAbrir) {
+            btnAbrir.style.display = 'inline-block';
+        } else if (btnAbrir) {
+            btnAbrir.style.display = 'none';
+        }
+    } else {
+        btnLoginLogout.textContent = 'Login';
+        if (btnAbrir) btnAbrir.style.display = 'none';
+    }
+}
+
+// Inicializar interfaz
+actualizarInterfazSegunSesion();
+
+// --- EVENTOS DE MODALES ---
+
+// Modal Noticia
 if (btnAbrir) {
     btnAbrir.onclick = function() { modal.classList.add('capa-modal-activa'); }
 }
 if (btnCerrar) {
     btnCerrar.onclick = function() { modal.classList.remove('capa-modal-activa'); }
 }
-window.onclick = function(event) {
-    if (event.target == modal) { modal.classList.remove('capa-modal-activa'); }
+
+// Modal Login
+if (btnLoginLogout) {
+    btnLoginLogout.onclick = function() {
+        const usuarioLogueado = localStorage.getItem('usuarioLogueado');
+        if (usuarioLogueado) {
+            // Si ya hay sesión, el botón hace Logout
+            localStorage.removeItem('usuarioLogueado');
+            actualizarInterfazSegunSesion();
+            location.reload(); // Recargar para limpiar estado
+        } else {
+            // Si no hay sesión, abrir modal
+            modalLogin.classList.add('capa-modal-activa');
+        }
+    }
 }
+
+if (btnCerrarLogin) {
+    btnCerrarLogin.onclick = function() { 
+        modalLogin.classList.remove('capa-modal-activa');
+        errorLogin.style.display = 'none';
+        formLogin.reset();
+    }
+}
+
+// Cerrar modales al hacer clic fuera
+window.onclick = function(event) {
+    if (event.target == modal) { 
+        modal.classList.remove('capa-modal-activa'); 
+    }
+    if (event.target == modalLogin) { 
+        modalLogin.classList.remove('capa-modal-activa');
+        errorLogin.style.display = 'none';
+        formLogin.reset();
+    }
+}
+
+// --- LÓGICA DE LOGIN ---
+
+if (formLogin) {
+    formLogin.onsubmit = function(e) {
+        e.preventDefault();
+        const userVal = document.getElementById('username').value;
+        const passVal = document.getElementById('password').value;
+
+        const user = usuarios[userVal];
+
+        if (user && user.password === passVal) {
+            // Login correcto
+            const datosUsuario = { username: userVal, role: user.role };
+            localStorage.setItem('usuarioLogueado', JSON.stringify(datosUsuario));
+            
+            actualizarInterfazSegunSesion();
+            modalLogin.classList.remove('capa-modal-activa');
+            formLogin.reset();
+            errorLogin.style.display = 'none';
+        } else {
+            // Login incorrecto
+            errorLogin.style.display = 'block';
+        }
+    };
+}
+
+// --- LÓGICA DE NOTICIAS ---
 
 function reorganizarDiseno() {
     if (!contenedorDinamico) return;
